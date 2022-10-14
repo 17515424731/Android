@@ -1,12 +1,10 @@
-# Exp_03 Android UI组件
+# 实验二 Android界面布局实验
 
-### 1. SimpleAdapter、ListView
+### 1. 线性布局
 
 - #### 思路
 
-  ①layout文件中编写单元组件，在MainActivity中利用SimpleAdapter绑定组件进行for循环遍历输出
-
-  ②Toast显示，响应选中事件的列表项取其对应的name属性值
+  ①layout文件中编写布局效果
 
 - #### ①部分实验代码：
 

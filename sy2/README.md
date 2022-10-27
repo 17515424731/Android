@@ -48,62 +48,38 @@
 
 - <img src="https://i.ibb.co/DwPWVZ6/2022-10-27-15-34-29.png" alt="avatar" style="zoom:20%;" />
 
-### 2.自定义布局的AlertDialog
+### 2.表格布局
 
 - #### 思路：
 
-  ①layout文件中编写alert样式 
-
-  ②通过AlertDialog.builder设置builder.setView
+  ①layout文件中编写布局效果
 
 - #### ①部分实验代码：
 
   ```xml
-  <TableLayout
-          android:id="@+id/alert"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent">
-  
-          <TableRow
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-  
-              <TextView
-                  android:id="@+id/alert_title"
-                  android:layout_width="match_parent"
-                  android:layout_height="80dp"
-                  android:layout_weight="1"
-                  android:background="#FFE600"
-                  android:fontFamily="cursive"
-                  android:gravity="center"
-                  android:textColor="@color/colorPrimary"
-                  android:text="ANDROID APP"
-                  android:textSize="24sp" />
-          </TableRow>
-  
-          <TableRow
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center">
-  
-              <EditText
-                  android:id="@+id/alert_username"
-  					…………………………
-  ```
-  
-- #### ②部分实验代码：
+  <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:stretchColumns="1">
 
-  ```java
-     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-     builder.setView(View.inflate(this, R.layout.alert, null));
-     builder.show();
+    <TableRow>
+        <TextView
+            android:text="Open...."
+            android:paddingLeft="10dp"/>
+        <TextView
+            android:text="Ctrl+O"
+            android:gravity="right"
+            android:paddingRight="10dp"/>
+    </TableRow>
+  					…………………………
   ```
 
 - #### 实验结果如下图：
 
-- <img src="https://i.ibb.co/52SFCfj/03-2.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="https://i.ibb.co/jDw0G90/2022-10-27-15-41-15.png" alt="avatar" style="zoom:50%; width:750px" />
 
 ### 3.使用XML定义菜单
 

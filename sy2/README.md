@@ -124,73 +124,73 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
   ```
-  
-- #### ②部分实验代码：
-
-  ```java
-  public boolean onCreateOptionsMenu (Menu menu){
-      getMenuInflater().inflate(R.menu.menu_demo, menu);
-      return super.onCrateOptionsMenu(menu);
-  }
-  ```
 
 - #### 实验结果如下图：
 
-- <img src="https://i.ibb.co/71cBQmt/03-3.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="https://i.ibb.co/mJZYYw7/2022-10-27-15-47-02.png" alt="avatar" style="zoom:50%; width:750px" />
 
-### 4.ActionMode的上下文菜单
+### 4.约束布局2
 
 - #### 思路：
 
-  ①创建菜单样式menu_blank
+  ①layout文件中编写布局效果
 
-  ②ActionModeActivity中注册View，实现ActionMode.callback回调
+  ②MainActivity中编写java代码
 
 - #### 部分代码：
 
   ```java
-  public void onCreateContextMenu(ContextMenu menu, View v,
-                                  ContextMenuInfo menuInfo) {
-      super.onCreateContextMenu(menu, v, menuInfo);
-      MenuInflater inflater = getMenuInflater();
-      inflater.inflate(R.menu.menu_blank, menu);
+   private fun makeFullScreen() {
+    // Remove Title
+    requestWindowFeature(Window.FEATURE_NO_TITLE)
+
+    // Make Fullscreen
+    window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+        WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
+    // Hide the toolbar
+    supportActionBar?.hide()
   }
   
   ……………………
       
-  ActionMode.Callback callback = new ActionMode.Callback()
-      {
+  ```
   
-          @Override
-          public boolean onCreateActionMode(ActionMode actionMode, Menu menu)
-          {
-              getMenuInflater().inflate(R.menu.menu_blank, menu);
-              return true;
-          }
   
-          …………
-  
-          @Override
-          public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem)
-          {
-              actionMode.setTitle(selected_items + " selected");
-              return true;
-          }
-      	
-      	…………
-      	
-      };
+  ```xml
+  <?xml version="1.0" encoding="utf-8"?>
+  <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+  <ImageView
+      android:id="@+id/spaceStationIcon"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:layout_marginTop="15dp"
+      android:src="@drawable/space_station_icon"
+      app:layout_constraintEnd_toStartOf="@+id/flightsIcon"
+      app:layout_constraintHorizontal_chainStyle="spread"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <ImageView
+      android:id="@+id/flightsIcon"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:src="@drawable/rocket_icon"
+      app:layout_constraintBottom_toBottomOf="@+id/spaceStationIcon"
+      app:layout_constraintEnd_toStartOf="@+id/roverIcon"
+      app:layout_constraintStart_toEndOf="@+id/spaceStationIcon"
+      app:layout_constraintTop_toTopOf="@+id/spaceStationIcon" />
   ```
 
 - #### 实验结果如下图：
 
-- <img src="https://i.ibb.co/5vkCL6H/03-4.png" alt="avatar" style="zoom:50%; width:750px" />
-
-### 5.补充拓展
-
-- 为方便进行测试，本实验还利用OnClick事件响应通过Intent进行Acitivity之间的跳转
-
-- 本实验已有打包Exp_03.apk 已上传至云盘
-- 链接：https://pan.baidu.com/s/17LbJ_3lf8NZbH8gEpNQseA 
-  提取码：3ujx 
+- <img src="https://i.ibb.co/tYLw9Yj/2022-10-27-15-59-31.png" alt="avatar" style="zoom:50%; width:750px" />
 

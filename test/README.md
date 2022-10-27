@@ -70,5 +70,5 @@
 
 - #### 实验结果如下图：
 
-- <img src="[https://ibb.co/sHPD9kR]" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="https://i.ibb.co/wsLbh3g/2022-10-27-15-18-47.png" alt="avatar" style="zoom:50%; width:750px" />
 

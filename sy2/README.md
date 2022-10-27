@@ -81,32 +81,48 @@
 
 - <img src="https://i.ibb.co/jDw0G90/2022-10-27-15-41-15.png" alt="avatar" style="zoom:50%; width:750px" />
 
-### 3.使用XML定义菜单
+### 3.约束布局1
 
 - #### 思路：
 
-  ①创建menu_demo.xml编写菜单样式
-
-  ②在MenuActivity中装填对应的菜单并添加到menu中
+  ①layout文件中编写布局效果
 
 - #### ①部分实验代码：
 
   ```xml
-  <menu>
-      <item android:title="字体大小">
-          <menu >
-              <item
-                  android:id="@+id/font_small"
-                  android:title="小" />
-              <item
-                  android:id="@+id/font_mid"
-                  android:title="中" />
-              <item
-                  android:id="@+id/mi_big"
-                  android:title="大" />
-          </menu>
-      </item>
-  </menu>
+  <?xml version="1.0" encoding="utf-8"?>
+  <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="605dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="553dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="0"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
   ```
   
 - #### ②部分实验代码：

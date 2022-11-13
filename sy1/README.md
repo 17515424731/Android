@@ -69,6 +69,7 @@
   ```
 
 - #### 实验结果如下图：
+- ![image](image/HelloWorld.png)
 
 - <img src="image/HelloWorld.png" alt="avatar" style="zoom:50%; width:750px" />
 

@@ -140,14 +140,20 @@
 
 - #### 实验结果如下图：
 
-- <img src="https://i.ibb.co/yY8fzr3/2022-10-27-16-48-59.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="https://github.com/17515424731/Android/blob/main/image/sy3-01.png" alt="avatar" style="zoom:50%; width:750px" />
 
-- <img src="https://i.ibb.co/g9QRTRD/2022-10-27-16-49-44.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="https://github.com/17515424731/Android/blob/main/image/sy3-02.png" alt="avatar" style="zoom:50%; width:750px" />
 
-- <img src="https://i.ibb.co/z66yFKJ/2022-10-27-16-50-10.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="https://github.com/17515424731/Android/blob/main/image/sy3-03.png" alt="avatar" style="zoom:50%; width:750px" />
 
-- <img src="https://i.ibb.co/qrDk723/2022-10-27-16-50-39.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="https://github.com/17515424731/Android/blob/main/image/sy3-04.png" alt="avatar" style="zoom:50%; width:750px" />
 
-- <img src="https://i.ibb.co/FJJw8HK/2022-10-27-16-51-40.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="https://github.com/17515424731/Android/blob/main/image/sy3-05.png" alt="avatar" style="zoom:50%; width:750px" />
 
-- <img src="https://i.ibb.co/f8GtKDV/2022-10-27-16-51-25.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="https://github.com/17515424731/Android/blob/main/image/sy3-06.png" alt="avatar" style="zoom:50%; width:750px" />
+
+- <img src="https://github.com/17515424731/Android/blob/main/image/sy3-07.png" alt="avatar" style="zoom:50%; width:750px" />
+
+- <img src="https://github.com/17515424731/Android/blob/main/image/sy3-08.png" alt="avatar" style="zoom:50%; width:750px" />
+
+- <img src="https://github.com/17515424731/Android/blob/main/image/sy3-09.png" alt="avatar" style="zoom:50%; width:750px" />

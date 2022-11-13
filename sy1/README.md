@@ -70,5 +70,4 @@
 
 - #### 实验结果如下图：
 
-- <img src="https://i.ibb.co/wsLbh3g/2022-10-27-15-18-47.png" alt="avatar" style="zoom:50%; width:750px" />
-
+- <img src="https://github.com/17515424731/Android/blob/main/image/HelloWorld.png" alt="avatar" style="zoom:50%; width:750px" />

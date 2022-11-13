@@ -46,7 +46,7 @@
 
 - #### 实验结果如下图：
 
-- <img src="https://i.ibb.co/DwPWVZ6/2022-10-27-15-34-29.png" alt="avatar" style="zoom:20%;" />
+- <img src="https://github.com/17515424731/Android/blob/main/image/LinearLayout.png" alt="avatar" style="zoom:20%;" />
 
 ### 2.表格布局
 
@@ -79,7 +79,7 @@
 
 - #### 实验结果如下图：
 
-- <img src="https://i.ibb.co/jDw0G90/2022-10-27-15-41-15.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="https://github.com/17515424731/Android/blob/main/image/TableLayout.png" alt="avatar" style="zoom:50%; width:750px" />
 
 ### 3.约束布局1
 
@@ -127,7 +127,7 @@
 
 - #### 实验结果如下图：
 
-- <img src="https://i.ibb.co/mJZYYw7/2022-10-27-15-47-02.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="https://github.com/17515424731/Android/blob/main/image/ConstraintLayout1.png" alt="avatar" style="zoom:50%; width:750px" />
 
 ### 4.约束布局2
 
@@ -192,5 +192,5 @@
 
 - #### 实验结果如下图：
 
-- <img src="https://i.ibb.co/tYLw9Yj/2022-10-27-15-59-31.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="https://github.com/17515424731/Android/blob/main/image/ConstraintLayout2.png" alt="avatar" style="zoom:50%; width:750px" />
 

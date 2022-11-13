@@ -396,7 +396,7 @@
     Intent intent = new Intent(null,mUri);
     intent.setClass(NoteEditor.this,OutputText.class);
     NoteEditor.this.startActivity(intent);
-}
+  }
 
 
   ```

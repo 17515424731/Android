@@ -922,8 +922,6 @@
   ```
   
   ④实验结果如下图：
-- <img src="https://github.com/17515424731/Android/blob/main/image/n6.png" alt="avatar" style="zoom:50%; width:750px" />
-
 - <img src="https://github.com/17515424731/Android/blob/main/image/n14.png" alt="avatar" style="zoom:50%; width:750px" />
 
 - <img src="https://github.com/17515424731/Android/blob/main/image/n15.png" alt="avatar" style="zoom:50%; width:750px" />

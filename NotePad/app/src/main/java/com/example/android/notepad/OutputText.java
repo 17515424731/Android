@@ -1,49 +1,51 @@
 package com.example.android.notepad;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.EditText;
+import android.os.Environment;
 import android.widget.Toast;
-
-import com.example.android.notepad.NotePad;
-import com.example.android.notepad.R;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
+
+/**
+ * Created by Administrator on 2017/5/16.
+ */
+
 public class OutputText extends Activity {
-    //要使用的数据库中笔记的信息
+
     private static final String[] PROJECTION = new String[] {
             NotePad.Notes._ID, // 0
             NotePad.Notes.COLUMN_NAME_TITLE, // 1
             NotePad.Notes.COLUMN_NAME_NOTE, // 2
             NotePad.Notes.COLUMN_NAME_CREATE_DATE, // 3
             NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE, // 4
+            NotePad.Notes.COLUMN_NAME_BACK_COLOR, //5
     };
-    //读取出的值放入这些变量
+
     private String TITLE;
     private String NOTE;
     private String CREATE_DATE;
     private String MODIFICATION_DATE;
-    //读取该笔记信息
+
     private Cursor mCursor;
-    //导出文件的名字
     private EditText mName;
-    //NoteEditor传入的uri，用于从数据库查出该笔记
     private Uri mUri;
-    //关于返回与保存按钮的一个特殊标记，返回的话不执行导出，点击按钮才导出
+
     private boolean flag = false;
+
     private static final int COLUMN_INDEX_TITLE = 1;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.output_text);
+
         mUri = getIntent().getData();
         mCursor = managedQuery(
                 mUri,        // The URI for the note that is to be retrieved.
@@ -52,8 +54,11 @@ public class OutputText extends Activity {
                 null,        // No where columns are used, so no where values are needed.
                 null         // No sort order is needed.
         );
+
         mName = (EditText) findViewById(R.id.output_name);
     }
+
+
     @Override
     protected void onResume(){
         super.onResume();
@@ -61,31 +66,33 @@ public class OutputText extends Activity {
             // The Cursor was just retrieved, so its index is set to one record *before* the first
             // record retrieved. This moves it to the first record.
             mCursor.moveToFirst();
-            //编辑框默认的文件名为标题，可自行更改
+            // Displays the current title text in the EditText object.
             mName.setText(mCursor.getString(COLUMN_INDEX_TITLE));
         }
     }
-    @SuppressLint("Range")
+
     @Override
     protected void onPause() {
         super.onPause();
         if (mCursor != null) {
-            //从mCursor读取对应值
             TITLE = mCursor.getString(mCursor.getColumnIndex(NotePad.Notes.COLUMN_NAME_TITLE));
             NOTE = mCursor.getString(mCursor.getColumnIndex(NotePad.Notes.COLUMN_NAME_NOTE));
             CREATE_DATE = mCursor.getString(mCursor.getColumnIndex(NotePad.Notes.COLUMN_NAME_CREATE_DATE));
             MODIFICATION_DATE = mCursor.getString(mCursor.getColumnIndex(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE));
-            //flag在点击导出按钮时会设置为true，执行写文件
             if (flag == true) {
                 write();
             }
             flag = false;
         }
     }
+
+
     public void OutputOk(View v){
         flag = true;
         finish();
     }
+
+
     private void write()
     {
         try

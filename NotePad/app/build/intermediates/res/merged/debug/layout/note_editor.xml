@@ -13,6 +13,8 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+
+
 <view xmlns:android="http://schemas.android.com/apk/res/android"
     class="com.example.android.notepad.NoteEditor$LinedEditText"
     android:id="@+id/note"
@@ -24,5 +26,5 @@
     android:fadingEdge="vertical"
     android:gravity="top"
     android:textSize="22sp"
-    android:capitalize="sentences"
-/>
+    android:capitalize="sentences" />
+

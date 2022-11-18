@@ -22,6 +22,7 @@
     <string name="title_create">New note</string>
     <string name="title_edit">Edit: %1$s</string>
     <string name="title_notes_list">Notes</string>
+    <string name="title_notes_search">Search</string>
 
     <string name="menu_add">New note</string>
     <string name="menu_save">Save</string>
@@ -30,6 +31,18 @@
     <string name="menu_revert">Revert changes</string>
     <string name="menu_copy">Copy</string>
     <string name="menu_paste">Paste</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_output">导出笔记</string>
+    <string name="menu_sort">排序</string>
+    <string name="menu_sort1">创建时间</string>
+    <string name="menu_sort2">修改时间</string>
+    <string name="menu_sort3">颜色</string>
+    <string name="menu_color">换背景</string>
+
+
+    <string name="output_name">导出名字</string>
+    <string name="output_ok">确认导出</string>
+
 
     <string name="button_ok">OK</string>
     <string name="text_title">Title:</string>
@@ -40,12 +53,4 @@
     <string name="error_title">Error</string>
     <string name="error_message">Error loading note</string>
     <string name="nothing_to_save">There is nothing to save</string>
-    <string name="menu_search" />
-    <string name="search_note" />
-    <string name="menu_output" />
-    <string name="output_ok" />
-    <string name="output_name" />
-    <string name="menu_sort" />
-    <string name="menu_sort1" >创建时间</string>
-    <string name="menu_sort2" >修改时间</string>
 </resources>

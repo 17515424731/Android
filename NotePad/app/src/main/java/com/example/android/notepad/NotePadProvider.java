@@ -45,6 +45,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -76,7 +78,7 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
     private static HashMap<String, String> sLiveFolderProjectionMap;
 
     /**
-     * Standard projection for the interesting columns of a normal note.
+     * Standard projection for the interesting columns of a normal note
      */
     private static final String[] READ_NOTE_PROJECTION = new String[] {
             NotePad.Notes._ID,               // Projection position 0, the note's id
@@ -131,7 +133,7 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
         sUriMatcher.addURI(NotePad.AUTHORITY, "live_folders/notes", LIVE_FOLDER_NOTES);
 
         /*
-         * Creates and initializes a projection map that returns all columns
+         * Creates and initializes a projection map that returns all columns 创建并初始化返回所有列的投影图
          */
 
         // Creates a new projection map instance. The map returns a column name
@@ -155,6 +157,11 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
         sNotesProjectionMap.put(
                 NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE,
                 NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE);
+
+        // 颜色
+        sNotesProjectionMap.put(
+                NotePad.Notes.COLUMN_NAME_BACK_COLOR,
+                NotePad.Notes.COLUMN_NAME_BACK_COLOR);
 
         /*
          * Creates an initializes a projection map for handling Live Folders
@@ -196,7 +203,8 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
                    + NotePad.Notes.COLUMN_NAME_TITLE + " TEXT,"
                    + NotePad.Notes.COLUMN_NAME_NOTE + " TEXT,"
                    + NotePad.Notes.COLUMN_NAME_CREATE_DATE + " INTEGER,"
-                   + NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE + " INTEGER"
+                   + NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE + " INTEGER,"
+                   + NotePad.Notes.COLUMN_NAME_BACK_COLOR + " INTEGER" //颜色数据
                    + ");");
        }
 
@@ -207,6 +215,7 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
         * by destroying the existing data.
         * A real application should upgrade the database in place.
         */
+
        @Override
        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
@@ -247,11 +256,12 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
     * @return A cursor containing the results of the query. The cursor exists but is empty if
     * the query returns no results or an exception occurs.
     * @throws IllegalArgumentException if the incoming URI pattern is invalid.
-    */
+    *
+	*/
+
    @Override
    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
            String sortOrder) {
-
        // Constructs a new query builder and sets its table name
        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
        qb.setTables(NotePad.Notes.TABLE_NAME);
@@ -305,7 +315,7 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
         * Performs the query. If no problems occur trying to read the database, then a Cursor
         * object is returned; otherwise, the cursor variable contains null. If no records were
         * selected, then the Cursor object is empty, and Cursor.getCount() returns 0.
-        */
+		*/
        Cursor c = qb.query(
            db,            // The database to query
            projection,    // The columns to return from the query
@@ -329,9 +339,9 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
     * @return The MIME type of the URI.
     * @throws IllegalArgumentException if the incoming URI pattern is invalid.
     */
+
    @Override
    public String getType(Uri uri) {
-
        /**
         * Chooses the MIME type based on the incoming URI pattern
         */
@@ -370,6 +380,8 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
      * @return a data stream MIME type. Currently, only text/plan is returned.
      * @throws IllegalArgumentException if the URI pattern doesn't match any supported patterns.
      */
+
+	 
     @Override
     public String[] getStreamTypes(Uri uri, String mimeTypeFilter) {
         /**
@@ -409,10 +421,12 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
      * @return AssetFileDescriptor A handle to the file.
      * @throws FileNotFoundException if there is no file associated with the incoming URI.
      */
+	 
+
+	 
     @Override
     public AssetFileDescriptor openTypedAssetFile(Uri uri, String mimeTypeFilter, Bundle opts)
             throws FileNotFoundException {
-
         // Checks to see if the MIME type filter matches a supported MIME type.
         String[] mimeTypes = getStreamTypes(uri, mimeTypeFilter);
 
@@ -459,6 +473,7 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
      * to perform the actual work of converting the data in one of cursors to a
      * stream of data for the client to read.
      */
+
     @Override
     public void writeDataToPipe(ParcelFileDescriptor output, Uri uri, String mimeType,
             Bundle opts, Cursor c) {
@@ -495,6 +510,9 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
      * @return The row ID of the inserted row.
      * @throws SQLException if the insertion fails.
      */
+
+	 
+	 
     @Override
     public Uri insert(Uri uri, ContentValues initialValues) {
 
@@ -515,18 +533,21 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
             values = new ContentValues();
         }
 
-        // Gets the current system time in milliseconds
+        // 将milliseconds转化为一定的时间格式
         Long now = Long.valueOf(System.currentTimeMillis());
+        Date date = new Date(now);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+        String dateTime = format.format(date);
 
         // If the values map doesn't contain the creation date, sets the value to the current time.
         if (values.containsKey(NotePad.Notes.COLUMN_NAME_CREATE_DATE) == false) {
-            values.put(NotePad.Notes.COLUMN_NAME_CREATE_DATE, now);
+            values.put(NotePad.Notes.COLUMN_NAME_CREATE_DATE, dateTime);
         }
 
         // If the values map doesn't contain the modification date, sets the value to the current
         // time.
         if (values.containsKey(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE) == false) {
-            values.put(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE, now);
+            values.put(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE, dateTime);
         }
 
         // If the values map doesn't contain a title, sets the value to the default title.
@@ -538,6 +559,12 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
         // If the values map doesn't contain note text, sets the value to an empty string.
         if (values.containsKey(NotePad.Notes.COLUMN_NAME_NOTE) == false) {
             values.put(NotePad.Notes.COLUMN_NAME_NOTE, "");
+        }
+
+
+        // 背景默认为白色
+        if (values.containsKey(NotePad.Notes.COLUMN_NAME_BACK_COLOR) == false) {
+            values.put(NotePad.Notes.COLUMN_NAME_BACK_COLOR, NotePad.Notes.DEFAULT_COLOR);
         }
 
         // Opens the database object in "write" mode.
@@ -579,6 +606,8 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
      * 0 is returned. To delete all rows and get a row count, use "1" as the where clause.
      * @throws IllegalArgumentException if the incoming URI pattern is invalid.
      */
+
+	 
     @Override
     public int delete(Uri uri, String where, String[] whereArgs) {
 
@@ -665,6 +694,8 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
      * @return The number of rows updated.
      * @throws IllegalArgumentException if the incoming URI pattern is invalid.
      */
+	 
+
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
 
@@ -746,6 +777,7 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
      *
      * @return a handle to the database helper object for the provider's data.
      */
+
     DatabaseHelper getOpenHelperForTest() {
         return mOpenHelper;
     }

@@ -919,7 +919,7 @@
     }
   ```
   
-  ⑥实验结果如下图：
+  ④实验结果如下图：
 
 - <img src="" alt="avatar" style="zoom:50%; width:750px" />
 

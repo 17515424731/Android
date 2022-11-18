@@ -78,7 +78,7 @@
   ```
   ⑤实验结果如下图：
 
-- <img src="https://github.com/17515424731/Android/blob/main/image/n1.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="" alt="avatar" style="zoom:50%; width:750px" />
 
 
 ### 2. 添加笔记查询功能
@@ -233,7 +233,7 @@
   
    ⑥实验结果如下图：
 
-- <img src="https://github.com/17515424731/Android/blob/main/image/n2.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="" alt="avatar" style="zoom:50%; width:750px" />
 
 
 ### 3.UI美化——更改背景
@@ -577,7 +577,7 @@
   
   ⑧实验结果如下图：
 
-- <img src="https://github.com/17515424731/Android/blob/main/image/n4.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="" alt="avatar" style="zoom:50%; width:750px" />
   
 ### 6.更改字体颜色、大小
 
@@ -695,13 +695,13 @@
   ```
   ⑤实验结果如下图：
 
-- <img src="https://github.com/17515424731/Android/blob/main/image/n4.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="" alt="avatar" style="zoom:50%; width:750px" />
 
-- <img src="https://github.com/17515424731/Android/blob/main/image/n5.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="" alt="avatar" style="zoom:50%; width:750px" />
 
-- <img src="https://github.com/17515424731/Android/blob/main/image/n6.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="" alt="avatar" style="zoom:50%; width:750px" />
 
-- <img src="https://github.com/17515424731/Android/blob/main/image/n7.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="" alt="avatar" style="zoom:50%; width:750px" />
 
 ### 7.添加文件导出功能
 
@@ -808,9 +808,9 @@
 
 ⑥实验结果如下图：
 
-- <img src="https://github.com/17515424731/Android/blob/main/image/n4.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="" alt="avatar" style="zoom:50%; width:750px" />
 
-- <img src="https://github.com/17515424731/Android/blob/main/image/n8.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="" alt="avatar" style="zoom:50%; width:750px" />
 
 ### 8.添加排序功能
 
@@ -878,10 +878,48 @@
         setListAdapter(adapter);
   ```
   ③实验结果如下图：
-- <img src="https://github.com/17515424731/Android/blob/main/image/n1.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="" alt="avatar" style="zoom:50%; width:750px" />
 
-- <img src="https://github.com/17515424731/Android/blob/main/image/n3.png" alt="avatar" style="zoom:50%; width:750px" />
+- <img src="" alt="avatar" style="zoom:50%; width:750px" />
 
-  ### 8.添加分享功能
+  ### 9.添加分享功能
 
 - #### 思路
+
+   ①（1）在editor_options_menu.xml中添加：
+
+  （2）实验代码：
+
+  ```xml
+      <item android:id="@+id/menu_share"
+        android:title="share"
+        android:showAsAction="ifRoom|withText"/>
+  ```
+  
+   ②（1）在NoteEditor中onOptionsItemSelected添加：
+
+  （2）实验代码：
+
+  ```java
+      case R.id.menu_share:
+            sendTo(this,mText.getText().toString());
+            break;
+  ```
+  
+  ③（1）在NoteEditor中添加sendTo函数
+  
+  （2）实验代码：
+
+  ```java
+      private void sendTo(Context context, String info) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT, info);
+        intent.setType("text/plain");
+        context.startActivity(intent);
+    }
+  ```
+  
+  ⑥实验结果如下图：
+
+- <img src="" alt="avatar" style="zoom:50%; width:750px" />
+
